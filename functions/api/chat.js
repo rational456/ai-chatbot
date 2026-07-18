@@ -2,6 +2,17 @@
 export async function onRequest(context) {
   const { request } = context
 
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, X-API-Key',
+  }
+
+  // 处理 CORS 预检（浏览器跨域时自动发的 OPTIONS）
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders })
+  }
+
   // 只处理 POST
   if (request.method !== 'POST') {
     return new Response(JSON.stringify({ error: '仅支持 POST' }), {
