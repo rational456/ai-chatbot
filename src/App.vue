@@ -29,12 +29,9 @@ const closeSidebar = () => {
 
     <!-- 主区域 -->
     <main class="main-content">
-      <!-- 收起/展开按钮 -->
-      <button class="toggle-btn" @click="toggleSidebar" :title="sidebarOpen ? '收起侧边栏' : '展开侧边栏'">
-        <svg v-if="sidebarOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M11 19l-7-7 7-7M18 19l-7-7 7-7"/>
-        </svg>
-        <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 展开按钮（仅侧边栏收起时显示） -->
+      <button v-if="!sidebarOpen" class="toggle-btn" @click="toggleSidebar" title="展开侧边栏">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="6" x2="21" y2="6" />
           <line x1="3" y1="12" x2="21" y2="12" />
           <line x1="3" y1="18" x2="21" y2="18" />
