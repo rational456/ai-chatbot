@@ -1,8 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import AppSidebar from '@/components/layout/AppSidebar.vue'
 
+const route = useRoute()
 const sidebarOpen = ref(true)
+
+// 手机端默认收起
+onMounted(() => {
+  if (window.innerWidth <= 640) {
+    sidebarOpen.value = false
+  }
+})
+
+const isSettingsPage = computed(() => route.name === 'settings')
 
 const toggleSidebar = () => {
   sidebarOpen.value = !sidebarOpen.value
@@ -29,8 +40,8 @@ const closeSidebar = () => {
 
     <!-- 主区域 -->
     <main class="main-content">
-      <!-- 展开按钮（仅侧边栏收起时显示） -->
-      <button v-if="!sidebarOpen" class="toggle-btn" @click="toggleSidebar" title="展开侧边栏">
+      <!-- 展开按钮（侧边栏收起 + 非设置页时显示） -->
+      <button v-if="!sidebarOpen && !isSettingsPage" class="toggle-btn" @click="toggleSidebar" title="展开侧边栏">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="6" x2="21" y2="6" />
           <line x1="3" y1="12" x2="21" y2="12" />
