@@ -17,12 +17,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-      },
-    },
-  },
+  // Cloudflare Workers 接管 /api，本地开发用 wrangler pages dev
 })
