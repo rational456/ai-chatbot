@@ -105,4 +105,26 @@ const handleKeydown = (e: KeyboardEvent) => {
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+/* 手机端 */
+@media (max-width: 640px) {
+  .chat-input-wrapper {
+    padding: 12px 8px;
+  }
+
+  .chat-input-inner {
+    gap: 8px;
+  }
+
+  .input-area {
+    min-height: 48px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .send-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
 </style>

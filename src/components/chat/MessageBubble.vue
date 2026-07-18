@@ -89,4 +89,28 @@ defineProps<{
 @keyframes blink {
   50% { opacity: 0; }
 }
+
+/* 手机端 */
+@media (max-width: 640px) {
+  .message-wrapper {
+    padding: 12px 8px;
+    gap: 6px;
+  }
+
+  .bubble {
+    max-width: 85%;
+    font-size: 14px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .avatar svg {
+    width: 16px;
+    height: 16px;
+  }
+}
 </style>

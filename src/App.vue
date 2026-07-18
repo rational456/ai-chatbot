@@ -54,15 +54,16 @@ html,body,#app {
   background: #ffffff;
 }
 
-/* 窄屏时侧边栏收窄 */
+/* 平板：侧边栏收窄 */
 @media (max-width: 768px) {
   .sidebar {
-    width: 200px;
-    min-width: 200px;
+    width: 220px;
+    min-width: 220px;
   }
 }
 
-@media (max-width: 500px) {
+/* 手机端：隐藏侧边栏，主区域全屏 */
+@media (max-width: 640px) {
   .sidebar {
     display: none;
   }

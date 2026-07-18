@@ -14,11 +14,14 @@ const maxTokens = ref(settings.maxTokens)
 
 const models = [
   { value: 'deepseek-ai/DeepSeek-V3', label: 'DeepSeek-V3（推荐）' },
+  { value: 'deepseek-ai/DeepSeek-V3.2', label: 'DeepSeek-V3.2' },
   { value: 'deepseek-ai/DeepSeek-R1', label: 'DeepSeek-R1' },
+  { value: 'Qwen/Qwen3-32B', label: 'Qwen3-32B' },
+  { value: 'Qwen/Qwen3-14B', label: 'Qwen3-14B' },
   { value: 'Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B' },
   { value: 'Qwen/Qwen2.5-72B-Instruct', label: 'Qwen2.5-72B' },
-  { value: '01-ai/Yi-1.5-34B-Chat', label: 'Yi-1.5-34B' },
-  { value: 'THUDM/glm-4-9b-chat', label: 'GLM-4-9B' },
+  { value: 'zai-org/GLM-4.5-Air', label: 'GLM-4.5-Air' },
+  { value: 'tencent/Hunyuan-A13B-Instruct', label: 'Hunyuan-A13B' },
 ]
 
 const handleSave = () => {

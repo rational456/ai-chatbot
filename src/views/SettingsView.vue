@@ -54,4 +54,14 @@ const router = useRouter()
 .form-wrapper {
   padding: 40px 24px;
 }
+
+@media (max-width: 640px) {
+  .top-bar {
+    padding: 12px 8px;
+  }
+
+  .form-wrapper {
+    padding: 20px 12px;
+  }
+}
 </style>
