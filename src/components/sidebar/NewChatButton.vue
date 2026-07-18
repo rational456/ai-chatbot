@@ -4,6 +4,8 @@ import {useChatStore} from '@/stores/chat'
 import type { Session } from '@/types'
 const router = useRouter();
 const chatStore = useChatStore();
+const emit = defineEmits<{ created: [] }>()
+
 const handleNewChat = () => {
   const newSession:Session ={
     id: crypto.randomUUID(),
@@ -14,6 +16,7 @@ const handleNewChat = () => {
   }
   chatStore.createSession(newSession)
   router.push({ name: 'chat', params: { sessionId: newSession.id } })
+  emit('created')
 }
 </script>
 

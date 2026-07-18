@@ -3,9 +3,11 @@ import { useChatStore } from '@/stores/chat'
 import SessionItem from '@/components/sidebar/SessionItem.vue'
 
 const chatStore = useChatStore()
+const emit = defineEmits<{ selected: [] }>()
 
 const handleSelect = (sessionId: string) => {
   chatStore.setActiveSession(sessionId)
+  emit('selected')
 }
 
 const handleDelete = (sessionId: string) => {
