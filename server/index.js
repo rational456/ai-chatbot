@@ -104,6 +104,6 @@ app.get('/api/health', (_req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`✅ 代理服务器已启动: http://localhost:${PORT}`)
-  console.log(`   转发目标: https://api.siliconflow.cn/v1/chat/completions`)
+  console.log(`代理服务器已启动: http://localhost:${PORT}`)
+  console.log(`转发目标: https://api.siliconflow.cn/v1/chat/completions`)
 })

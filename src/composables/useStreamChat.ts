@@ -73,7 +73,7 @@ export async function streamChat(
     callbacks.onDone()
   } catch (err: unknown) {
     if (err instanceof DOMException && err.name === 'AbortError') {
-      callbacks.onDone() // 用户主动中断，正常结束
+      callbacks.onDone() // 主动中断，正常结束
     } else {
       callbacks.onError(err instanceof Error ? err.message : '网络请求失败')
     }

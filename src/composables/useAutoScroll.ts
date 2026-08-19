@@ -39,7 +39,7 @@ export function useAutoScroll(containerRef: Ref<HTMLElement | null>, trigger: Re
     })
   }
 
-  // 当内容变化（新消息或流式 chunk）时，自动滚到底部
+  // 当内容变化时，自动滚到底部
   watch(
     trigger,
     () => {

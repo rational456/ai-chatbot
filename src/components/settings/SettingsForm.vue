@@ -6,7 +6,6 @@ const settings = useSettingsStore()
 
 const showKey = ref(false)
 
-// 本地副本，方便用户编辑后统一保存
 const apiKey = ref(settings.apiKey)
 const model = ref(settings.model)
 const temperature = ref(settings.temperature)

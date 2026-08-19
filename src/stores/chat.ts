@@ -44,7 +44,7 @@ export const useChatStore = defineStore('chat', () => {
         activeSessionId.value = sessionId
     }
 
-    // 核心：发送消息 + 发起流式请求
+    // 发送消息,发起流式请求
     const sendMessage = async (content: string) => {
         const sessionId = activeSessionId.value
         if (!sessionId || isStreaming.value) return
@@ -56,7 +56,7 @@ export const useChatStore = defineStore('chat', () => {
             return
         }
 
-        // 1. 添加用户消息
+        //添加用户消息
         const userMsg: Message = {
             id: crypto.randomUUID(),
             role: 'user',
@@ -73,7 +73,7 @@ export const useChatStore = defineStore('chat', () => {
             session.title = content.slice(0, 30) + (content.length > 30 ? '…' : '')
         }
 
-        // 2. 创建 AI 占位消息
+        // 创建 AI 占位消息
         const aiMsg: Message = {
             id: crypto.randomUUID(),
             role: 'assistant',
@@ -84,7 +84,7 @@ export const useChatStore = defineStore('chat', () => {
         session.messages.push(aiMsg)
         session.updatedAt = Date.now()
 
-        // 3. 设置流式状态
+        //设置流式状态
         isStreaming.value = true
         streamingMessageId.value = aiMsg.id
         const ac = new AbortController()
@@ -92,13 +92,13 @@ export const useChatStore = defineStore('chat', () => {
 
         saveToStorage()
 
-        // 4. 构建消息历史（最近 20 轮，不含当前 AI 占位消息）
+        //构建消息历史（最近 20 轮，不含当前 AI 占位消息）
         const history = session.messages
             .filter(m => m.id !== aiMsg.id)
             .slice(-40) // 最多 20 轮对话
             .map(m => ({ role: m.role, content: m.content }))
 
-        // 5. 发起流式请求
+        //发起流式请求
         await streamChat(history, ac.signal, {
             onChunk(chunk: string) {
                 const msg = sessions.value
@@ -114,7 +114,6 @@ export const useChatStore = defineStore('chat', () => {
                     ?.messages.find(m => m.id === aiMsg.id)
                 if (msg) {
                     msg.isStreaming = false
-                    // 去掉自动命名逻辑（已移到上面）
                 }
                 isStreaming.value = false
                 streamingMessageId.value = null
